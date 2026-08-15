@@ -57,12 +57,12 @@ const BAND_DATA = {
   },
 
   members: [
-    { name: 'Alex', role: 'Lead Singer', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: null },
-    { name: 'Naman', role: 'Lead Singer', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: null },
-    { name: 'Priyanshu', role: 'Lead Guitarist', icon: 'guitar', handle: '@pieee.py', instagramUrl: 'https://instagram.com/pieee.py', imagePath: null },
-    { name: 'Suryansh', role: 'Distortion Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: null },
-    { name: 'Devansh', role: 'Rhythm Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: null },
-    { name: 'Krish', role: 'Drummer', icon: 'drum', handle: '@just4krish', instagramUrl: 'https://instagram.com/just4krish', imagePath: null },
+    { name: 'Alex', role: 'Lead Singer', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: '/alex.jpg' },
+    { name: 'Naman', role: 'Lead Singer', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: '/naman.jpg' },
+    { name: 'Priyanshu', role: 'Lead Guitarist', icon: 'guitar', handle: '@pieee.py', instagramUrl: 'https://instagram.com/pieee.py', imagePath: '/priyanshu.jpg' },
+    { name: 'Suryansh', role: 'Distortion Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: '/suryansh.jpg' },
+    { name: 'Devansh', role: 'Rhythm Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: '/devansh.jpg' },
+    { name: 'Krish', role: 'Drummer', icon: 'drum', handle: '@just4krish', instagramUrl: 'https://instagram.com/just4krish', imagePath: '/krish.jpg' },
   ],
   // TODO: point `imagePath` at a real photo (e.g. './photos/alex.jpg')
   // to replace a member's generated initial-avatar.
