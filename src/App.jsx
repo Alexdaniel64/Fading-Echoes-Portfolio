@@ -57,12 +57,12 @@ const BAND_DATA = {
   },
 
   members: [
-    { name: 'Alex', role: 'Lead Singer', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: '/alex.jpg' },
-    { name: 'Naman', role: 'Lead Singer', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: '/naman.jpg' },
-    { name: 'Priyanshu', role: 'Lead Guitarist', icon: 'guitar', handle: '@pieee.py', instagramUrl: 'https://instagram.com/pieee.py', imagePath: '/priyanshu.jpg' },
-    { name: 'Suryansh', role: 'Distortion Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: '/suryansh.jpg' },
-    { name: 'Devansh', role: 'Rhythm Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: '/devansh.jpg' },
-    { name: 'Krish', role: 'Drummer', icon: 'drum', handle: '@just4krish', instagramUrl: 'https://instagram.com/just4krish', imagePath: '/krish.jpg' },
+    { name: 'Alex', role: 'Lead Singer', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: null },
+    { name: 'Naman', role: 'Lead Singer', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: null },
+    { name: 'Priyanshu', role: 'Lead Guitarist', icon: 'guitar', handle: '@pieee.py', instagramUrl: 'https://instagram.com/pieee.py', imagePath: null },
+    { name: 'Suryansh', role: 'Distortion Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: null },
+    { name: 'Devansh', role: 'Rhythm Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: null },
+    { name: 'Krish', role: 'Drummer', icon: 'drum', handle: '@just4krish', instagramUrl: 'https://instagram.com/just4krish', imagePath: null },
   ],
   // TODO: point `imagePath` at a real photo (e.g. './photos/alex.jpg')
   // to replace a member's generated initial-avatar.
@@ -299,6 +299,41 @@ const GlobalStyle = () => (
 
     .fe-focus:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }
 
+    /* ---- cross-device fit: phone / tablet / laptop / PC ---- */
+    html, body { overflow-x: hidden; }
+
+    /* mobile browsers resize 100vh when the address bar shows/hides,
+       which cuts off hero content — svh stays stable across devices */
+    .fe-hero-viewport {
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+
+    /* icon-only buttons: guarantee a real tap target on touch devices */
+    .fe-tap-target {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    /* short/landscape phones: the hero's full vertical stack won't fit
+       100svh, so compact it instead of letting it overflow or crop */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .fe-hero-viewport { min-height: 100vh; padding-top: 5rem; padding-bottom: 1.5rem; }
+      .fe-hero-emblem { width: 4.5rem !important; height: 4.5rem !important; margin-bottom: 0.75rem !important; }
+      .fe-hero-hide-compact { display: none; }
+    }
+
+    /* touch devices can't :hover — mirror the card glow on :active so a
+       tap still gives feedback (press-and-hold shows it, same as hover) */
+    .fe-card:active {
+      transform: translateY(-4px);
+      border-color: #22d3ee;
+      box-shadow: 0 24px 48px -18px rgba(0,0,0,.7), 0 0 0 1px rgba(34,211,238,.35), 0 0 34px rgba(34,211,238,.22);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .fe-metal, .fe-particle, .fe-bolt, .fe-echo-ring, .fe-glow-btn, .fe-eq-bar, .fe-flash {
         animation: none !important;
@@ -528,7 +563,7 @@ const Nav = () => {
             </motion.button>
           </nav>
 
-          <button onClick={() => setMenuOpen(true)} className="md:hidden text-zinc-100 fe-focus rounded" aria-label="Open menu">
+          <button onClick={() => setMenuOpen(true)} className="fe-tap-target md:hidden text-zinc-100 fe-focus rounded" aria-label="Open menu">
             <Menu className="w-7 h-7" />
           </button>
         </div>
@@ -548,7 +583,7 @@ const Nav = () => {
                 <LogoBadge className="w-8 h-8" />
                 <span className="fe-display text-xl text-zinc-100">FADING ECHOES</span>
               </div>
-              <button onClick={() => setMenuOpen(false)} className="text-zinc-100 fe-focus rounded" aria-label="Close menu">
+              <button onClick={() => setMenuOpen(false)} className="fe-tap-target text-zinc-100 fe-focus rounded" aria-label="Close menu">
                 <X className="w-7 h-7" />
               </button>
             </div>
@@ -602,7 +637,7 @@ const Hero = () => {
     <section
       id="home"
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
+      className="fe-hero-viewport relative flex flex-col items-center justify-center overflow-hidden px-6"
       style={{ scrollMarginTop: '0px' }}
     >
       {/* echo rings behind the emblem */}
@@ -623,7 +658,7 @@ const Hero = () => {
         className="relative z-10 flex flex-col items-center text-center max-w-4xl"
       >
         <div
-          className="relative mb-7 w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden fe-glow-btn"
+          className="fe-hero-emblem relative mb-7 w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden fe-glow-btn"
           style={{ border: '2px solid rgba(34,211,238,0.6)' }}
         >
           <img src={BAND_LOGO} alt="Fading Echoes emblem" className="w-full h-full object-cover" />
@@ -667,7 +702,7 @@ const Hero = () => {
         onClick={() => scrollToSection('band')}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 z-10 flex flex-col items-center gap-1 text-zinc-500 hover:text-cyan-400 transition-colors fe-focus rounded"
+        className="fe-hero-hide-compact absolute bottom-8 z-10 flex flex-col items-center gap-1 text-zinc-500 hover:text-cyan-400 transition-colors fe-focus rounded"
         aria-label="Scroll down"
       >
         <span className="fe-mono text-[10px] tracking-widest uppercase">Scroll</span>
@@ -1129,14 +1164,14 @@ const Footer = () => (
         <LogoBadge className="w-7 h-7" />
         <span className="fe-display text-lg tracking-wide text-zinc-300">FADING ECHOES</span>
       </div>
-      <div className="flex items-center gap-6">
-        <a href={`mailto:${BAND_DATA.socials.email}`} className="fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="Email">
+      <div className="flex items-center gap-2">
+        <a href={`mailto:${BAND_DATA.socials.email}`} className="fe-tap-target fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="Email">
           <Mail className="w-5 h-5" />
         </a>
-        <a href={BAND_DATA.socials.instagramUrl} target="_blank" rel="noopener noreferrer" className="fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="Instagram">
+        <a href={BAND_DATA.socials.instagramUrl} target="_blank" rel="noopener noreferrer" className="fe-tap-target fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="Instagram">
           <Instagram className="w-5 h-5" />
         </a>
-        <a href={BAND_DATA.socials.youtubeUrl} target="_blank" rel="noopener noreferrer" className="fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="YouTube">
+        <a href={BAND_DATA.socials.youtubeUrl} target="_blank" rel="noopener noreferrer" className="fe-tap-target fe-focus text-zinc-500 hover:text-cyan-400 transition-colors rounded" aria-label="YouTube">
           <Youtube className="w-5 h-5" />
         </a>
       </div>
