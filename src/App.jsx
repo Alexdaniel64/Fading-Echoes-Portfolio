@@ -707,7 +707,7 @@ const MemberCard = ({ member, index }) => (
       style={{ aspectRatio: '4 / 3', background: 'linear-gradient(160deg, #18181b 0%, #0c0d10 100%)' }}
     >
       {member.imagePath ? (
-        <img src={member.imagePath} alt={`${member.name} — ${member.role}`} className="fe-member-img object-top" loading="lazy" />
+        <img src={member.imagePath} alt={`${member.name} — ${member.role}`} className="fe-member-img" loading="lazy" />
       ) : (
         <div className="fe-avatar-inner w-full h-full flex items-center justify-center" style={{ transition: 'transform .5s ease' }}>
           <RoleIcon icon={member.icon} className="absolute w-24 h-24 text-zinc-800" />
