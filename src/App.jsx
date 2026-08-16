@@ -49,18 +49,18 @@ const BAND_LOGO = "/logo.png";
 // ---------------------------------------------------------------
 const BAND_DATA = {
   socials: {
-    email: 'alexdaniel_the_great12345@gmail.com',
+    email: 'alexdanielthegreat12345@gmail.com',
     instagramHandle: '@fading_echoes69',
     instagramUrl: 'https://instagram.com/fading_echoes69',
     youtubeUrl: 'https://www.youtube.com/@ProjectFadingEchoes',
   },
 
   members: [
-    { name: 'Alex', role: 'Lead Singer', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: '/alex.jpg' },
-    { name: 'Naman', role: 'Lead Singer', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: '/naman.jpg' },
+    { name: 'Alex', role: 'Vocalist', icon: 'mic', handle: '@alexdaniel_64', instagramUrl: 'https://instagram.com/alexdaniel_64', imagePath: '/alex.jpg' },
+    { name: 'Naman', role: 'Vocalist', icon: 'mic', handle: '@shandilya_naman_', instagramUrl: 'https://instagram.com/shandilya_naman_', imagePath: '/naman.jpg' },
     { name: 'Priyanshu', role: 'Lead Guitarist', icon: 'guitar', handle: '@pieee.py', instagramUrl: 'https://instagram.com/pieee.py', imagePath: '/priyanshu.jpg' },
-    { name: 'Suryansh', role: 'Distortion Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: '/suryansh.jpg' },
-    { name: 'Devansh', role: 'Rhythm Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: '/devansh.jpg' },
+    { name: 'Suryansh', role: 'Electric Guitarist', icon: 'guitar', handle: '@not.suryansht', instagramUrl: 'https://instagram.com/not.suryansht', imagePath: '/suryansh.jpg' },
+    { name: 'Devansh', role: 'Guitarist', icon: 'guitar', handle: '@devansh_yadav22', instagramUrl: 'https://instagram.com/devansh_yadav22', imagePath: '/devansh.jpg' },
     { name: 'Krish', role: 'Drummer', icon: 'drum', handle: '@just4krish', instagramUrl: 'https://instagram.com/just4krish', imagePath: '/krish.jpg' },
   ],
   // TODO: point `imagePath` at a real photo (e.g. './photos/alex.jpg')
