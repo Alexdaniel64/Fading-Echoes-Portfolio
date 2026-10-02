@@ -94,11 +94,14 @@ const BAND_DATA = {
   // TODO: set `videoId` to the 11-char YouTube ID to embed a real video.
 
   reelItems: [
-    { caption: 'Backstage, right before doors open', reelUrl: null },
-    { caption: 'The crowd on this mashup drop', reelUrl: null },
-    { caption: 'Original verse — first listen', reelUrl: null },
+    { caption: 'Backstage, right before doors open', reelUrl: 'https://www.instagram.com/reel/DVTf4MqkdOz/' },
+    { caption: 'The crowd on this mashup drop', reelUrl: 'https://www.instagram.com/reel/DY2n4-Au6ic/' },
+    { caption: 'Original verse — first listen', reelUrl: 'https://www.instagram.com/reel/DZKuucZygO-/' },
+    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DXKca0ugUDR/' },
+    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DY_xmvruDU8/' },
+    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DcOyNJ5h4nl/' },
   ],
-  // TODO: set `reelUrl` to the full instagram.com/reel/... link to embed it.
+  // Set `reelUrl` to the full instagram.com/reel/... link to embed it.
 
   videoClips: [
     { title: 'Tere Liye — Full Live Set', src: null, poster: null, duration: '4:32' },
@@ -873,7 +876,7 @@ const ReelCard = ({ item }) => (
   <div className="fe-media-card relative rounded-xl overflow-hidden border border-zinc-800 mb-6 break-inside-avoid">
     {item.reelUrl ? (
       <div className="fe-iframe-container" style={{ aspectRatio: '9 / 16' }}>
-        <iframe src={`${item.reelUrl}embed`} title={item.caption} allowFullScreen scrolling="no" />
+        <iframe src={`${item.reelUrl}embed/`} title={item.caption} allowFullScreen scrolling="no" />
       </div>
     ) : (
       <div
@@ -978,6 +981,9 @@ const Media = () => (
         <ReelCard item={BAND_DATA.reelItems[1]} />
         <YouTubeCard item={BAND_DATA.youtubeItems[2]} />
         <ReelCard item={BAND_DATA.reelItems[2]} />
+        {BAND_DATA.reelItems.slice(3).map((item) => (
+          <ReelCard key={item.reelUrl} item={item} />
+        ))}
       </div>
 
       <div className="flex flex-wrap gap-4 mt-4">
