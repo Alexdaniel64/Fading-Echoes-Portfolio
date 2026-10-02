@@ -94,14 +94,11 @@ const BAND_DATA = {
   // TODO: set `videoId` to the 11-char YouTube ID to embed a real video.
 
   reelItems: [
-    { caption: 'Backstage, right before doors open', reelUrl: 'https://www.instagram.com/reel/DVTf4MqkdOz/' },
-    { caption: 'The crowd on this mashup drop', reelUrl: 'https://www.instagram.com/reel/DY2n4-Au6ic/' },
-    { caption: 'Original verse — first listen', reelUrl: 'https://www.instagram.com/reel/DZKuucZygO-/' },
-    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DXKca0ugUDR/' },
-    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DY_xmvruDU8/' },
-    { caption: 'Instagram Reel', reelUrl: 'https://www.instagram.com/reel/DcOyNJ5h4nl/' },
+    { caption: 'Backstage, right before doors open', reelUrl: null },
+    { caption: 'The crowd on this mashup drop', reelUrl: null },
+    { caption: 'Original verse — first listen', reelUrl: null },
   ],
-  // Set `reelUrl` to the full instagram.com/reel/... link to embed it.
+  // TODO: set `reelUrl` to the full instagram.com/reel/... link to embed it.
 
   videoClips: [
     { title: 'Tere Liye — Full Live Set', src: null, poster: null, duration: '4:32' },
@@ -873,27 +870,34 @@ const YouTubeCard = ({ item }) => (
 );
 
 const ReelCard = ({ item }) => (
-  <a
-    href={item.reelUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={`Open Instagram Reel: ${item.caption}`}
-    title={item.caption}
-    className="fe-focus group relative block overflow-hidden bg-zinc-950"
-    style={{ aspectRatio: '9 / 16' }}
-  >
-    <div
-      className="absolute inset-0 flex items-center justify-center transition-colors group-hover:bg-zinc-900"
-      style={{ background: 'linear-gradient(160deg, #1c1f26 0%, #0a0b0e 100%)' }}
-    >
-      <div
-        className="flex h-12 w-12 items-center justify-center rounded-full border border-white/60 bg-black/30 transition-transform group-hover:scale-110"
-        aria-hidden="true"
-      >
-        <Play className="ml-0.5 h-5 w-5 text-white" fill="white" />
+  <div className="fe-media-card relative rounded-xl overflow-hidden border border-zinc-800 mb-6 break-inside-avoid">
+    {item.reelUrl ? (
+      <div className="fe-iframe-container" style={{ aspectRatio: '9 / 16' }}>
+        <iframe src={`${item.reelUrl}embed`} title={item.caption} allowFullScreen scrolling="no" />
       </div>
+    ) : (
+      <div
+        className="fe-media-zoom fe-glitch-layer relative flex items-center justify-center"
+        style={{ aspectRatio: '9 / 16', background: 'linear-gradient(200deg, #1c1f26 0%, #0a0b0e 100%)' }}
+      >
+        <span className="fe-glitch-shard" />
+        <div
+          className="fe-play-icon w-12 h-12 rounded-full flex items-center justify-center"
+          style={{ background: 'rgba(34,211,238,0.15)', border: '1px solid rgba(34,211,238,0.5)', transition: 'transform .35s ease' }}
+        >
+          <Instagram className="w-5 h-5 text-cyan-400" />
+        </div>
+      </div>
+    )}
+    <div className="absolute top-0 left-0 p-3 z-10 pointer-events-none">
+      <span className="fe-mono text-[10px] tracking-widest uppercase text-zinc-300 px-2.5 py-1 rounded-full" style={{ background: 'rgba(8,9,12,0.7)' }}>
+        Reel
+      </span>
     </div>
-  </a>
+    <div className="absolute inset-x-0 bottom-0 p-4 z-10 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }}>
+      <p className="text-zinc-100 font-medium text-xs">{item.caption}</p>
+    </div>
+  </div>
 );
 
 const VideoClipCard = ({ clip, index }) => {
@@ -969,17 +973,11 @@ const Media = () => (
 
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
         <YouTubeCard item={BAND_DATA.youtubeItems[0]} />
+        <ReelCard item={BAND_DATA.reelItems[0]} />
         <YouTubeCard item={BAND_DATA.youtubeItems[1]} />
+        <ReelCard item={BAND_DATA.reelItems[1]} />
         <YouTubeCard item={BAND_DATA.youtubeItems[2]} />
-      </div>
-
-      <div className="mt-12">
-        <Eyebrow>Instagram Reels</Eyebrow>
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-zinc-800 sm:grid-cols-3 lg:grid-cols-4">
-          {BAND_DATA.reelItems.map((item) => (
-            <ReelCard key={item.reelUrl} item={item} />
-          ))}
-        </div>
+        <ReelCard item={BAND_DATA.reelItems[2]} />
       </div>
 
       <div className="flex flex-wrap gap-4 mt-4">
